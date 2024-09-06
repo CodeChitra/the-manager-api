@@ -8,10 +8,8 @@ import notFound from "./middlewares/not-found";
 import authRouter from "./routes/auth";
 import employeesRouter from "./routes/employees";
 import tasksRouter from "./routes/tasks";
-import helmet from "helmet";
 import cookieParser from "cookie-parser";
 import verifyJwt from "./middlewares/verify-jwt";
-import { corsOptions } from "./config";
 dotenv.config();
 const app = express();
 

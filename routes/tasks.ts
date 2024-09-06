@@ -8,7 +8,8 @@ import {
 
 const router = express.Router();
 
-router.route("/:id").get(getAllTasks).post(createTask);
-router.route("/:id").patch(updateTask).delete(deleteTask);
+router.route("/:employeeId").get(getAllTasks).post(createTask);
+router.route("/:employeeId").put(updateTask);
+router.route("/:employeeId/:taskId").delete(deleteTask);
 
 export default router;

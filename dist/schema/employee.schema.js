@@ -17,7 +17,8 @@ const employeeCreateSchema = zod_1.z.object({
     skills: zod_1.z
         .array(zod_1.z.string())
         .min(1, { message: "At least one skill is required." })
-        .max(8, { message: "No more than 8 skills are allowed." }),
+        .max(8, { message: "No more than 8 skills are allowed." })
+        .optional(),
     experience: zod_1.z
         .number()
         .min(0, { message: "Please fill valid experience in days." })

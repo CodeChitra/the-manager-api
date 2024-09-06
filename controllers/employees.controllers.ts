@@ -81,6 +81,7 @@ const getEmployee = async (req: Request, res: Response) => {
 
 //! Update A Employee
 const updateEmployee = async (req: Request, res: Response) => {
+  console.log("Update Employee");
   const result = employeeCreateSchema.safeParse(req.body);
   if (!result.success) {
     return res.status(StatusCodes.BAD_REQUEST).json({
@@ -91,7 +92,7 @@ const updateEmployee = async (req: Request, res: Response) => {
     });
   }
   const { id } = req.params;
-  await Employee.findOneAndUpdate(
+  const foundEmployee = await Employee.findOneAndUpdate(
     { _id: id, createdBy: req.userId },
     req.body,
     {
@@ -99,6 +100,7 @@ const updateEmployee = async (req: Request, res: Response) => {
       runValidators: true,
     }
   );
+  console.log(foundEmployee);
   res
     .status(StatusCodes.OK)
     .json({ success: "Employee details updated successfully!" });

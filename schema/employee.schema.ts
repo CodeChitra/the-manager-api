@@ -18,7 +18,8 @@ const employeeCreateSchema = z.object({
   skills: z
     .array(z.string())
     .min(1, { message: "At least one skill is required." })
-    .max(8, { message: "No more than 8 skills are allowed." }),
+    .max(8, { message: "No more than 8 skills are allowed." })
+    .optional(),
 
   experience: z
     .number()

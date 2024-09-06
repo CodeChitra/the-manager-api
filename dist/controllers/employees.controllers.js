@@ -81,6 +81,7 @@ const getEmployee = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
 exports.getEmployee = getEmployee;
 //! Update A Employee
 const updateEmployee = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log("Update Employee");
     const result = employee_schema_1.employeeCreateSchema.safeParse(req.body);
     if (!result.success) {
         return res.status(http_status_codes_1.StatusCodes.BAD_REQUEST).json({
@@ -91,10 +92,11 @@ const updateEmployee = (req, res) => __awaiter(void 0, void 0, void 0, function*
         });
     }
     const { id } = req.params;
-    yield employee_models_1.default.findOneAndUpdate({ _id: id, createdBy: req.userId }, req.body, {
+    const foundEmployee = yield employee_models_1.default.findOneAndUpdate({ _id: id, createdBy: req.userId }, req.body, {
         new: true,
         runValidators: true,
     });
+    console.log(foundEmployee);
     res
         .status(http_status_codes_1.StatusCodes.OK)
         .json({ success: "Employee details updated successfully!" });

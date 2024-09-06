@@ -10,7 +10,7 @@ const taskSchema = new mongoose_1.default.Schema({
         required: [true, "Task name is required!"],
         lowercase: true,
         minlength: [3, "Task name should contain atleast 3 characters."],
-        maxlength: [20, "Username can not contain more than 40 characters."],
+        maxlength: [40, "Username can not contain more than 40 characters."],
     },
     description: {
         type: String,

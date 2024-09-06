@@ -85,6 +85,7 @@ const refresh = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         return res.sendStatus(http_status_codes_1.StatusCodes.UNAUTHORIZED);
     const refreshToken = cookies.jwt;
     const foundUser = yield user_models_1.default.findOne({ refreshToken });
+    console.log("Found user: ", foundUser);
     if (!foundUser)
         return res.sendStatus(http_status_codes_1.StatusCodes.FORBIDDEN);
     jsonwebtoken_1.default.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err) => {

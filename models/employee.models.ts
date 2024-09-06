@@ -33,17 +33,6 @@ const employeeSchema = new mongoose.Schema<IEmployee>(
     },
     skills: {
       type: [String],
-      required: [true, "Please provide Employee's skills."],
-      validate: [
-        {
-          validator: (v: string[]) => v.length > 0,
-          message: "At least one skill is required.",
-        },
-        {
-          validator: (v: string[]) => v.length <= 8,
-          message: "No more than 8 skills are allowed.",
-        },
-      ],
     },
     experience: {
       type: Number,

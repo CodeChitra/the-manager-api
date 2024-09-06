@@ -88,6 +88,7 @@ const refresh = async (req: Request, res: Response) => {
   const refreshToken = cookies.jwt;
 
   const foundUser = await User.findOne({ refreshToken });
+  console.log("Found user: ", foundUser);
   if (!foundUser) return res.sendStatus(StatusCodes.FORBIDDEN);
 
   jwt.verify(
